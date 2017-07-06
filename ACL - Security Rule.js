@@ -1,6 +1,7 @@
 //This goes in the advanced portion of the ACL
 //It calls a script include and passes the current record (service line in this case)
 //The script include manipulates it to return one result.
+//
 
 var manager = new CWTAccessManager(current.u_service_line);
 var owner = manager.is_service_line_owner();
