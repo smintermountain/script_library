@@ -1,16 +1,19 @@
+//onChange script to check the selected date value against a specific date
+
 function onChange(control, oldValue, newValue, isLoading) {
 	if (isLoading || newValue == '') {
 		return;
 	}
 
-	//g_form.addInfoMessage(newValue + ' Date from Date/Time Picker');
+	//Start a new system date with the date() function
 	var dt1WkDate = new Date();
-	//g_form.addInfoMessage(dt1WkDate + ' Current System Date');
+	//Set the checkDate variable to our current system time + 7 days
 	var checkDate = new Date(dt1WkDate.setDate(dt1WkDate.getDate() + 7));
-	//g_form.addInfoMessage(checkDate + ' Current System Date + 7 days');
 
+	//Use the date() function to convert the sting value of the selected date to a date object
 	var chosenDate = new Date(newValue.toString());
-	//g_form.addInfoMessage(chosenDate + ' Date from Date/Time Picker Converted');
+
+	//Compare the two dates, this can be done in multiple ways depending on requirements
 	if(chosenDate < checkDate){
 		alert('Date must be 7 days after current date.');
 		g_form.setValue('change_date', '');
@@ -18,5 +21,4 @@ function onChange(control, oldValue, newValue, isLoading) {
 		alert('Please select or insert a valid date.');
 		g_form.setValue('change_date', '');
 	}
-
 }

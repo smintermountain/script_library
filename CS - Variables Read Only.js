@@ -1,11 +1,14 @@
 function onLoad(){
+//Don't make any variables read only if user has the admin role
 	if (g_user.hasRole('admin')) {
-		//g_form.setVariablesReadOnly(true);
-		//g_form.addInfoMessage("Testing Script Run");
 		return;
 	} else try{
+		//if the user doesn't have the admin role, set all variables on the form to read-only
+		//this function is not documented
 	g_form.setVariablesReadOnly(true);
-	//g_form.addInfoMessage("Testing Script Run Not Admin");
+
    }
-   catch(e){}
+   catch(e){
+		 //No error handling for this script
+	 }
 }

@@ -1,3 +1,5 @@
+//widget script include
+
 var comma_delimited = grp_apps.length ? grp_apps.join(",") : '';
 
 

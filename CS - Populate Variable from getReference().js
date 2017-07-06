@@ -4,9 +4,9 @@ function onChange(control, oldValue, newValue, isLoading) {
 		g_form.clearValue('variables.contact_phone');
 	} else {
 		// Find the users information
-		var grUser = g_form.getReference('variables.app_support', setUserInfo);
+		var grUser = g_form.getReference('variables.app_support', setUserInfo); //Callback to function
 	}
-	
+
 	function setUserInfo(grUser) {
 		// Set the users information
 		if (grUser.phone) {

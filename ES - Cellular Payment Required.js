@@ -1,6 +1,9 @@
-var dollars ="";
-dollars = current.variables.iphone_memory.getDisplayValue();
+//email script for sending out an email to users who select more expensive iPhones
 
+var dollars ="";
+dollars = current.variables.iphone_memory.getDisplayValue(); //get the value of the memory variable
+
+//Check to see which choice was made
 if(dollars == "128GB - (Employee Pays $200.00)"){
 	template.print("You have purchased a mobile phone that requires an extra payment to a cashier in your facility.  You owe $200, please pay this to a cashier in your facility and attach the scanned receipt to your request.");
 }
