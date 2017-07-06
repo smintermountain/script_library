@@ -17,12 +17,14 @@ function onChange(control, oldValue, newValue, isLoading) {
 
 function doAjax1(grUser) {
 
+    //Start call of script include
 		var grCost = grUser.cost_center;
 		var ga = new GlideAjax("getCostCenter");
 		ga.addParam("sysparm_name", "costCenter");
 		ga.addParam("sysparm_cost_id", grCost);
 		ga.getXMLAnswer(function(answer) {
 
+      //Check to see if there was a value returned in the XML Answer
 			if (!answer) {
   			g_form.setValue("cost_center", '');
 			}else{

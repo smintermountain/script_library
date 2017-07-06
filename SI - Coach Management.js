@@ -5,16 +5,20 @@ coachManagement.prototype = {
 		this.employID = employee;
 	},
 	getUsersCoached: function() {
-		gs.info('***** ' + this.userID + ' UserID');
-		gs.info('***** ' + this.employID + ' Employee');
 		var grCoach = new GlideAggregate('x_inthe_employee_c_coaching_delegate_table');
+		grCoach.addQuery('u_coach', this.userID);
+		grCoach.addQuery('u_employee', this.employID);
+		grCoach.addQuery('active', true);
 		grCoach.addAggregate('COUNT');
-		//grCoach.addQuery('active', 'true');
 		grCoach.query();
-		grCoach.next();
-		gs.info('***** ' + grCoach.getAggregate('COUNT') + ' Relations Count');
 
-		return grCoach.getAggregate('COUNT') > 0;
+		var users = 0;
+
+		if (grCoach.next()){
+			users = grCoach.getAggregate('COUNT');
+		}
+
+		return users > 0;
 
 	},
 	getValidReasons: function() {
@@ -24,9 +28,13 @@ coachManagement.prototype = {
 		grReasons.addQuery('active', true);
 		grReasons.addAggregate('COUNT');
 		grReasons.query();
-		grReasons.next();
 
-		return grReasons.getAggregate('COUNT') > 0;
+		var reason_ct = 0;
+
+		if(grReasons.next()){
+			reason_ct = grReasons.getAggregate('COUNT');
+		}
+		return  reason_ct > 0;
 
 	},
 	usrFilter: function(){
@@ -79,7 +87,6 @@ coachManagement.prototype = {
 		gs.info('***** Manager List From Private Function ' + manager);
 		return manager;
 	},
-
 
 
 	type: 'coachManagement'
